@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  training:
+    container_name: experiment_training
+    image: deep-rl-course:unit1
+    build: .
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - .:/workspace
+    command: nvidia-smi
