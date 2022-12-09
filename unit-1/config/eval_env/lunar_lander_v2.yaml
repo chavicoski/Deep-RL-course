@@ -1,0 +1,4 @@
+_target_: stable_baselines3.common.monitor.Monitor
+env:
+  _target_: gym.make
+  id: "LunarLander-v2"

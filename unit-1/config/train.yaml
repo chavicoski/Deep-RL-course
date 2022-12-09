@@ -1,0 +1,20 @@
+defaults:
+  - _self_
+  - train_env: lunar_lander_v2
+  - eval_env: lunar_lander_v2
+  - model: ppo
+
+experiment_name: "ppo_lunar-lander-v2"
+
+# Training params
+total_timesteps: 1000000
+
+# Eval params
+n_eval_episodes: 10
+deterministic: true
+
+hydra:
+  run:
+    dir: experiments_runs/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True

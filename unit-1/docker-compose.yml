@@ -13,4 +13,4 @@ services:
             - capabilities: [gpu]
     volumes:
       - .:/workspace
-    command: nvidia-smi
+    command: python train.py

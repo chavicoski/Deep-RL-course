@@ -1,0 +1,10 @@
+_target_: stable_baselines3.PPO
+policy: "MlpPolicy"
+# The `env` parameter should be provided in the script
+n_steps: 1024
+batch_size: 64
+n_epochs: 10
+gamma: 0.999
+gae_lambda: 0.98
+ent_coef: 0.01
+verbose: 1

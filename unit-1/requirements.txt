@@ -4,3 +4,4 @@ box2d-kengz
 huggingface_sb3
 pyglet==1.5.1
 pyvirtualdisplay
+hydra-core

@@ -1,0 +1,3 @@
+_target_: stable_baselines3.common.env_util.make_vec_env
+env_id: "LunarLander-v2"
+n_envs: 16
