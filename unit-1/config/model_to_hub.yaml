@@ -1,0 +1,29 @@
+# Name of the environment
+env_id: "LunarLander-v2"
+
+# Function to load the model from a checkpoint zip file
+load_model:
+  # Note: You should call the load function for you RL algorithm (e.g. PPO, DQN...)
+  _target_: stable_baselines3.PPO.load
+  # Path to the model checkpoint file to upload
+  path: "runs/train/2022-12-09_18-37-08/ppo_lunar-lander-v2.zip"
+
+# Name for the model file in the hub
+model_name: "ppo_lunar-lander-v2"
+
+# RL alorithm used in the model
+model_architecture: "PPO"
+
+# Id of the repository in the Hugging Face Hub
+# The format is: "{organization}/{repo_name}" (use your username as the "organization")
+repo_id: "chavicoski/PPO-MlpPolicy-LunarLander-v2"
+
+# Commit message for the hub repository
+commit_message: "PPO with MLP policy for Lunar Lander v2"
+
+hydra:
+  run:
+    # The script outputs will be stored in this folder
+    dir: runs/model_to_hub/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True

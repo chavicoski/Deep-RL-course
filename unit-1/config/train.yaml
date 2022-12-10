@@ -16,6 +16,6 @@ deterministic: true
 hydra:
   run:
     # The experiment outputs will be stored in this folder
-    dir: experiments_runs/${now:%Y-%m-%d_%H-%M-%S}
+    dir: runs/train/${now:%Y-%m-%d_%H-%M-%S}
   job:
     chdir: True

@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  training:
+  train:
     container_name: experiment_training
     image: deep-rl-course:unit1
     build: .
@@ -14,3 +14,17 @@ services:
     volumes:
       - .:/workspace
     command: python train.py
+
+  model_to_hub:
+    container_name: model_to_hub
+    image: deep-rl-course:unit1
+    build: .
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - .:/workspace
+    command: bash -c "huggingface-cli login && python model_to_hub.py"
