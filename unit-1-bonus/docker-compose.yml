@@ -26,5 +26,6 @@ services:
           devices:
             - capabilities: [gpu]
     volumes:
-      - .:/workspace
-    command: bash -c "huggingface-cli login && python model_to_hub.py"
+      - ./runs:/workspace/runs
+      - ./model_to_hub.sh:/workspace/model_to_hub.sh
+    command: bash -c "huggingface-cli login && ./model_to_hub.sh"
