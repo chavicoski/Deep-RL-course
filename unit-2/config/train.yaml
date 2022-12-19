@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - env: frozen_lake_v1
+
+experiment_name: "QLearning_FrozenLake-v1-4x4-noSlippery"
+
+# Training hyperparameters
+train_hparams:
+  n_episodes: 10000000
+  max_steps: 99
+  learning_rate: 0.01
+  gamma: 0.95
+  min_epsilon: 0.05
+  max_epsilon: 1.0
+  decay_rate: 0.0005
+
+# Evaluation hyperparameters
+eval_hparams:
+  n_episodes: 100
+  max_steps: 99
+
+hydra:
+  run:
+    # The experiment outputs will be stored in this folder
+    dir: runs/train/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True

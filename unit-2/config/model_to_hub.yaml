@@ -1,0 +1,36 @@
+# Name of the environment
+env_id: "FrozenLake-v1"
+
+# Tags for the model card in the Hub
+tags:
+  - "q-learning"
+  - "reinforcement-learning"
+  - "custom-implementation"
+
+# Path to the model checkpoint file to upload
+model_path: "runs/train/2022-12-19_21-21-57/QLearning_FrozenLake-v1-4x4-noSlippery.pkl"
+# Path to the training hyperparameters of the model
+hparams_path: "runs/train/2022-12-19_21-21-57/QLearning_FrozenLake-v1-4x4-noSlippery.json"
+
+# Name for the model file in the hub
+model_name: "QLearning_FrozenLake-v1"
+
+# RL alorithm used in the model
+model_architecture: "Q-Learning"
+
+# Id of the repository in the Hugging Face Hub
+# The format is: "{organization}/{repo_name}" (use your username as the "organization")
+repo_id: "chavicoski/QLearning-FrozenLake-v1-4x4-noSlippery"
+
+# Commit message for the hub repository
+commit_message: "Custom Q-Learning agent for FrozenLake-v1 4x4 noSlippery"
+
+# Frames Per Second (fps) to use in the sample video of the repo
+fps: 1
+
+# Number of episodes to evaluate the model
+eval_episodes: 100
+
+hydra:
+  run:
+    dir: runs/model_to_hub/${now:%Y-%m-%d_%H-%M-%S}
