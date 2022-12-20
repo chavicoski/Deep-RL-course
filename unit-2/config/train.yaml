@@ -1,10 +1,10 @@
 defaults:
   - _self_
-  - env: frozen_lake_v1
+  - env: taxi_v3
   - train_hparams: default
-  - eval_hparams: default
+  - eval_hparams: with_seed
 
-experiment_name: "QLearning_FrozenLake-v1-4x4-noSlippery"
+experiment_name: "QLearning_Taxi-v3"
 
 hydra:
   run:

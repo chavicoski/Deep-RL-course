@@ -1,5 +1,5 @@
 # Name of the environment
-env_id: "FrozenLake-v1"
+env_id: "Taxi-v3"
 
 # Tags for the model card in the Hub
 tags:
@@ -8,20 +8,20 @@ tags:
   - "custom-implementation"
 
 # Path to the model checkpoint file to upload
-model_path: "runs/train/2022-12-20_19-07-55/QLearning_FrozenLake-v1-4x4-noSlippery.pkl"
+model_path: "runs/train/2022-12-20_19-37-45/QLearning_Taxi-v3.pkl"
 
 # Name for the model file in the hub
-model_name: "QLearning_FrozenLake-v1"
+model_name: "QLearning_Taxi-v3"
 
 # RL alorithm used in the model
 model_architecture: "Q-Learning"
 
 # Id of the repository in the Hugging Face Hub
 # The format is: "{organization}/{repo_name}" (use your username as the "organization")
-repo_id: "chavicoski/QLearning-FrozenLake-v1-4x4-noSlippery"
+repo_id: "chavicoski/QLearning-Taxi-v3"
 
 # Commit message for the hub repository
-commit_message: "Custom Q-Learning agent for FrozenLake-v1 4x4 noSlippery"
+commit_message: "Custom Q-Learning agent for Taxi-v3 environment"
 
 # Frames Per Second (fps) to use in the sample video of the repo
 fps: 1

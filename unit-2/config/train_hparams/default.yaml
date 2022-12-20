@@ -1,4 +1,4 @@
-n_episodes: 10000000
+n_episodes: 500000
 max_steps: 99
 learning_rate: 0.01
 gamma: 0.95
