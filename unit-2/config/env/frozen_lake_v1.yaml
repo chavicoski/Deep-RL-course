@@ -1,0 +1,4 @@
+_target_: gym.make
+id: "FrozenLake-v1"
+map_name: "4x4"
+is_slippery: False
