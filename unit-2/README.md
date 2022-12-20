@@ -29,6 +29,6 @@ Each training run will create a folder in "*runs/train/\<DATETIME\>/*". You will
     
 ### 3 - Push the trained model to the Hub
 
-Before pushing the model to the Hub **YOU MUST** edit the file [model_to_hub.yaml](config/model_to_hub.yaml). You should at least change the model path (to point to the model in "*runs/train/\<DATETIME\>/\<MODEL_FILENAME\>.zip*") and the *repo_id* to push the model to you personal repository. If you have changed the environment to train the model (to the *Frozen Lake*), you should also change the field that reference the env name.
+Before pushing the model to the Hub **YOU MUST** edit the file [model_to_hub.yaml](config/model_to_hub.yaml). You should at least change the model path (to point to the model in "*runs/train/\<DATETIME\>/\<MODEL_FILENAME\>.zip*") and the *repo_id* to push the model to you personal repository. If you have changed the environment to train the model (to the *Frozen Lake*), you should also change the fields that reference the env name.
 
     docker-compose run model_to_hub
