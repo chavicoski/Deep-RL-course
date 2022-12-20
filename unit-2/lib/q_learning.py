@@ -1,13 +1,9 @@
 """Module that implements the Q-Learning algorithm for training RL Agents"""
-import datetime
-import json
 import random
-from pathlib import Path
-from typing import Tuple
+from typing import List, Tuple
 
 import imageio
 import numpy as np
-import pickle5 as pickle
 from gym import Env
 from pyvirtualdisplay import Display
 from tqdm import tqdm
@@ -106,12 +102,18 @@ class QLearning:
                 # Update the current state for the next step
                 state = new_state
 
-    def _play_episode(self, max_steps: int, record_video: bool = False) -> dict:
+    def _play_episode(
+        self,
+        max_steps: int,
+        record_video: bool = False,
+        seed: int = None,
+    ) -> dict:
         """Execute one episode run
 
         Args:
             max_steps (int): Max steps for the episode
             record_video (bool): To return the video of the episode
+            seed (int): Seed to initialize the environment
 
         Returns:
             A dictionary with:
@@ -119,7 +121,7 @@ class QLearning:
                 "steps": Number of executed steps
                 "video": Video of the episode run (If enabled)
         """
-        state = self.env.reset()
+        state = self.env.reset(seed=seed)
         total_reward = 0  # Accumulate the episode rewards
         frames = []  # To record the video
         for step in range(max_steps):
@@ -144,21 +146,38 @@ class QLearning:
 
         return {"reward": total_reward, "steps": step + 1, "video": video}
 
-    def evaluate(self, n_episodes: int, max_steps: int) -> Tuple[float, float]:
+    def evaluate(
+        self,
+        n_episodes: int,
+        max_steps: int,
+        seeds: List[int] = None,
+    ) -> Tuple[float, float]:
         """Evaluate the Q-Learning agent for `n_episodes` episodes and return the
         average reward and std of the reward
 
         Args:
             n_episodes (int): Number of episodes to train
             max_steps (int): Max steps per episode
+            seeds (List[int]): List of length `n_episodes` with the seeds to initialize
+                               each episode
 
         Returns:
             The mean reward and std values
         """
+        if seeds and len(seeds) != n_episodes:
+            raise ValueError(
+                f"The number of seeds ({len(seeds)}) should be equal to the number "
+                f"of episodes ({n_episodes})"
+            )
+
         episode_rewards = []
-        for _ in tqdm(range(n_episodes)):
+        for episode in tqdm(range(n_episodes)):
             # Play the episode and get the results
-            episode_res = self._play_episode(max_steps, record_video=False)
+            episode_res = self._play_episode(
+                max_steps,
+                record_video=False,
+                seed=seeds[episode] if seeds else None,
+            )
             # Store the episode total reward
             episode_rewards.append(episode_res["reward"])
 

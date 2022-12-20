@@ -27,9 +27,10 @@ def main(cfg: DictConfig):
     # Load model from checkpoint zip file
     with open(cfg.model_path, "rb") as f:
         model: QLearning = pickle.load(f)
-    # Load the training hyperparameters of the model
-    with open(cfg.hparams_path, "r") as f:
-        hparams = json.load(f)
+    # Load the eval hparams to evaluate the model again
+    model_dir = os.path.dirname(cfg.model_path)
+    with open(os.path.join(model_dir, "eval_hparams.json"), "r") as f:
+        eval_hparams = json.load(f)
 
     # Prepare the Hugging Face API
     api = HfApi()
@@ -40,25 +41,30 @@ def main(cfg: DictConfig):
     # Download the files from the repo
     repo_local_path = Path(snapshot_download(repo_id=cfg.repo_id))
 
-    # Add some info attributes to the model
-    if "map_name" in model.env.spec.kwargs:
-        hparams["map_name"] = model.env.spec.kwargs["map_name"]
-        if "is_slippery" in model.env.spec.kwargs:
-            hparams["slippery"] = model.env.spec.kwargs["is_slippery"]
-
     # Add the model to the repo
     model_filename = os.path.basename(cfg.model_path)
     shutil.copyfile(cfg.model_path, repo_local_path / model_filename)
+    # Add the hyperparameters to the repo
+    shutil.copyfile(
+        os.path.join(model_dir, "train_hparams.json"),
+        repo_local_path / "train_hparams.json",
+    )
+    shutil.copyfile(
+        os.path.join(model_dir, "eval_hparams.json"),
+        repo_local_path / "eval_hparams.json",
+    )
 
     # Evaluate the model and save the results
     print("Evaluating the model:")
-    mean_reward, std_reward = model.evaluate(cfg.eval_episodes, hparams["max_steps"])
+    mean_reward, std_reward = model.evaluate(
+        cfg.eval_episodes, eval_hparams["max_steps"], eval_hparams["seeds"]
+    )
 
     evaluate_data = {
         "env_id": model.env.spec.id,
         "mean_reward": mean_reward,
         "std_reward": std_reward,
-        "n_eval_episodes": hparams["n_episodes"],
+        "n_eval_episodes": eval_hparams["n_episodes"],
         "eval_datetime": datetime.datetime.now().isoformat(),
     }
     # Store the evaluation results in a JSON file
@@ -110,7 +116,7 @@ def main(cfg: DictConfig):
 
     # Create the sample video
     video_path = repo_local_path / "replay.mp4"
-    model.record_video(video_path, hparams["max_steps"], fps=cfg.fps)
+    model.record_video(video_path, eval_hparams["max_steps"], fps=cfg.fps)
 
     # Push everything to the Hub
     api.upload_folder(

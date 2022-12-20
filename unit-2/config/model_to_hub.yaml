@@ -8,9 +8,7 @@ tags:
   - "custom-implementation"
 
 # Path to the model checkpoint file to upload
-model_path: "runs/train/2022-12-19_21-21-57/QLearning_FrozenLake-v1-4x4-noSlippery.pkl"
-# Path to the training hyperparameters of the model
-hparams_path: "runs/train/2022-12-19_21-21-57/QLearning_FrozenLake-v1-4x4-noSlippery.json"
+model_path: "runs/train/2022-12-20_19-07-55/QLearning_FrozenLake-v1-4x4-noSlippery.pkl"
 
 # Name for the model file in the hub
 model_name: "QLearning_FrozenLake-v1"
