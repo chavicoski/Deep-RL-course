@@ -24,6 +24,8 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 2](unit-2): This unit explains how **Q-Learning** works. In the exercise you can train a Q-Learning agent (**implemented from scratch**) to play in two different environments: [Frozen Lake v1](https://www.gymlibrary.dev/environments/toy_text/frozen_lake/) and [Taxi v3](https://www.gymlibrary.dev/environments/toy_text/taxi/).
 
+- [Unit 3](unit-3): This unit explains how **Deep Q-Learning** works. In the exercise you can train a Deep Q-Learning agent to play Atari games using the game frames and Convolutional Neural Network (CNN).
+
 # HOW TO RUN
 
 In each unit folder you can find a README with the full explanation to run the code. Each unit has the code to train the models and push them to the [Hugging Face Hub](https://huggingface.co/docs/hub/index).
