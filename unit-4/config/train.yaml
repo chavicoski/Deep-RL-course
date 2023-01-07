@@ -1,0 +1,35 @@
+defaults:
+  - _self_
+  - train_env: cartpole_v1
+  - eval_env: cartpole_v1
+
+experiment_name: "Reinforce_CartPole-v1"
+
+# Computing device
+device: "gpu" # Options: "gpu" or "cpu"
+
+policy:
+  _target_: lib.reinforce.Policy
+  h_size: 16  # Hidden size of the DNN
+  # `state_size` and `action_size` are obtained during runtime from the environment
+
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 0.01
+
+train_hparams:
+  n_training_episodes: 1000  # Total number of episodes to train the agent
+  max_steps: 1000  # Max steps per episode
+  gamma: 1.0  # Exploration/exploitation factor
+  print_every: 100  # Number of episodes between each training status print
+
+eval_hparams:
+  n_eval_episodes: 1000
+  max_steps: 1000
+
+hydra:
+  run:
+    # The experiment outputs will be stored in this folder
+    dir: runs/train/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True
