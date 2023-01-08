@@ -27,6 +27,13 @@ eval_hparams:
   n_eval_episodes: 1000
   max_steps: 1000
 
+# File to store the trained model parameters
+model_path: "model.pt"
+
+# Replay video config
+video_path: "replay.mp4"
+video_fps: 30
+
 hydra:
   run:
     # The experiment outputs will be stored in this folder

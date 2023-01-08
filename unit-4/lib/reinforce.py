@@ -3,6 +3,7 @@ from collections import deque
 from typing import List, Tuple
 
 import gym
+import imageio
 import numpy as np
 import torch
 import torch.nn as nn
@@ -181,3 +182,38 @@ def evaluate_agent(
     std_reward = np.std(episode_rewards)
 
     return mean_reward, std_reward
+
+
+def record_video(
+    env: gym.Env,
+    policy: Policy,
+    out_path: str,
+    fps: int = 30,
+    device: str = "cpu",
+) -> None:
+    """Plays one episode and saves the resulting video in a file
+
+    Args:
+        env (gym.Env): Environment to play
+        policy (Policy): Policy algorithm to take the actions for the video
+        out_path (str): Filepath to store the video (with .mp4 extension)
+        fps (int): Frames per second for the video
+        device (str): Computing device id
+    """
+    print("Going to record a replay video...")
+    state, _ = env.reset()
+    images = []  # To store the video frames
+    # Store the starting frame before taking any action
+    images.append(env.render())
+    done = False
+    while not done:
+        # Take the action that have the maximum expected future reward given that state
+        action, _ = policy.act(state, device)
+        state, _, terminated, truncated, _ = env.step(action)
+        done = terminated or truncated
+        # Store the frame of the current state
+        images.append(env.render())
+
+    # Store the frames in a video file
+    imageio.mimsave(out_path, [np.array(img) for img in images], fps=fps)
+    print(f"Video stored in '{out_path}'")

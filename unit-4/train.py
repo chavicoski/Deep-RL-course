@@ -5,9 +5,10 @@ The configuration is handled using the `hydra` library. You can modify the confi
 using the YAML files in the `config` folder
 """
 import hydra
+import torch
 from gym import Env
 from hydra.utils import instantiate
-from lib.reinforce import Policy, evaluate_agent, reinforce
+from lib.reinforce import Policy, evaluate_agent, record_video, reinforce
 from lib.utils import get_device
 from omegaconf import DictConfig
 
@@ -33,14 +34,21 @@ def main(cfg: DictConfig):
     opt = instantiate(cfg.optimizer, policy.parameters())
 
     # Train phase
+    print(f"Starting training for {cfg.train_hparams.n_training_episodes} episodes")
     reinforce(env, policy, opt, device=device, **cfg.train_hparams)
 
     # Prepare the evaluation environment
     eval_env = instantiate(cfg.eval_env)
+    print("Evaluating the model...")
     mean_reward, std_reward = evaluate_agent(
         eval_env, policy, device=device, **cfg.eval_hparams
     )
     print(f"Evaluation results: {mean_reward:.2f} +/- {std_reward:.2f}")
+
+    # Store the Policy model to a file
+    torch.save(policy, cfg.model_path)
+    # Create a demo video of the trained agent
+    record_video(eval_env, policy, cfg.video_path, cfg.video_fps, device)
 
 
 if __name__ == "__main__":
