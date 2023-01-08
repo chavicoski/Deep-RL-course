@@ -4,13 +4,15 @@ The script can be configured to change the environment, the hyperparameters...
 The configuration is handled using the `hydra` library. You can modify the configuration
 using the YAML files in the `config` folder
 """
+import json
+
 import hydra
 import torch
 from gym import Env
 from hydra.utils import instantiate
 from lib.reinforce import Policy, evaluate_agent, record_video, reinforce
 from lib.utils import get_device
-from omegaconf import DictConfig
+from omegaconf import DictConfig, OmegaConf
 
 
 @hydra.main(version_base=None, config_path="config", config_name="train")
@@ -49,6 +51,9 @@ def main(cfg: DictConfig):
     torch.save(policy, cfg.model_path)
     # Create a demo video of the trained agent
     record_video(eval_env, policy, cfg.video_path, cfg.video_fps, device)
+    # Save hyperparameters
+    with open(cfg.hparams_path, "w") as outfile:
+        json.dump(OmegaConf.to_container(cfg), outfile)
 
 
 if __name__ == "__main__":

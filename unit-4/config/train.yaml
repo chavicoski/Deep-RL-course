@@ -10,15 +10,15 @@ device: "gpu" # Options: "gpu" or "cpu"
 
 policy:
   _target_: lib.reinforce.Policy
-  h_size: 16  # Hidden size of the DNN
+  h_size: 32  # Hidden size of the DNN
   # `state_size` and `action_size` are obtained during runtime from the environment
 
 optimizer:
   _target_: torch.optim.Adam
-  lr: 0.01
+  lr: 0.001
 
 train_hparams:
-  n_training_episodes: 1000  # Total number of episodes to train the agent
+  n_training_episodes: 5000  # Total number of episodes to train the agent
   max_steps: 1000  # Max steps per episode
   gamma: 1.0  # Exploration/exploitation factor
   print_every: 100  # Number of episodes between each training status print
@@ -29,6 +29,9 @@ eval_hparams:
 
 # File to store the trained model parameters
 model_path: "model.pt"
+
+# Path to store all the config params into a JSON file
+hparams_path: "hyperparameters.json"
 
 # Replay video config
 video_path: "replay.mp4"

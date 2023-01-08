@@ -1,29 +1,39 @@
-# Name of the environment
-env_id: "LunarLander-v2"
+defaults:
+  - _self_
+  - eval_env: cartpole_v1
 
-# Function to load the model from a checkpoint zip file
-load_model:
-  # Note: You should call the load function for you RL algorithm (e.g. PPO, DQN...)
-  _target_: stable_baselines3.PPO.load
-  # Path to the model checkpoint file to upload
-  path: "runs/train/2022-12-09_18-37-08/ppo_lunar-lander-v2.zip"
+# Computing device
+device: "gpu" # Options: "gpu" or "cpu"
+
+# Tags for the model card in the Hub
+tags:
+  - "reinforce"
+  - "reinforcement-learning"
+  - "custom-implementation"
+  - "deep-rl-class"
+
+# Path to the directory of the training run to upload
+model_dir: "runs/train/2023-01-08_19-02-55"
+# Path to the trained model checkpoint
+model_path : "${model_dir}/model.pt"
+# Path to the hyperparameters used to train the model
+hparams_path : "${model_dir}/hyperparameters.json"
 
 # Name for the model file in the hub
-model_name: "ppo_lunar-lander-v2"
-
-# RL alorithm used in the model
-model_architecture: "PPO"
+model_name: "Reinforce_CartPole-v1"
 
 # Id of the repository in the Hugging Face Hub
 # The format is: "{organization}/{repo_name}" (use your username as the "organization")
-repo_id: "chavicoski/PPO-MlpPolicy-LunarLander-v2"
+repo_id: "chavicoski/Reinforce_CartPole-v1"
 
-# Commit message for the hub repository
-commit_message: "PPO with MLP policy for Lunar Lander v2"
+# Frames Per Second (fps) to use in the sample video of the repo
+fps: 30
+
+# Number of episodes to evaluate the model
+eval_hparams:
+  n_eval_episodes: 1000
+  max_steps: 1000
 
 hydra:
   run:
-    # The script outputs will be stored in this folder
     dir: runs/model_to_hub/${now:%Y-%m-%d_%H-%M-%S}
-  job:
-    chdir: True
