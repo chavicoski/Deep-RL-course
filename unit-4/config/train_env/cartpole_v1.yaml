@@ -1,3 +1,2 @@
 _target_: gym.make
 id: "CartPole-v1"
-render_mode: "rgb_array"

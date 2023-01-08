@@ -6,6 +6,7 @@ using the YAML files in the `config` folder
 """
 import json
 
+import gym_pygame  # Import it to add more envs to Gym
 import hydra
 import torch
 from gym import Env

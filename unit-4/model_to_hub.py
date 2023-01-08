@@ -14,6 +14,7 @@ import os
 import shutil
 from pathlib import Path
 
+import gym_pygame  # Import it to add more envs to Gym
 import hydra
 import torch
 from huggingface_hub import HfApi, snapshot_download

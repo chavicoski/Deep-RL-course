@@ -66,16 +66,16 @@ def reinforce(
     for i_episode in range(1, n_training_episodes + 1):
         saved_log_probs = []  # Stores the log_prob of each action taken
         rewards = []  # Stores the reward of each action taken
-        state, _ = env.reset()
+        state = env.reset()
         # Play an episode and collect the data
         for t in range(max_steps):
             # Choose an action
             action, log_prob = policy.act(state, device)
             saved_log_probs.append(log_prob)
             # Apply the action and get the results
-            state, reward, terminated, truncated, _ = env.step(action)
+            state, reward, done, _ = env.step(action)
             rewards.append(reward)
-            if terminated or truncated:
+            if done:
                 break
         episode_total_reward = sum(rewards)
         scores_deque.append(episode_total_reward)
@@ -164,15 +164,15 @@ def evaluate_agent(
     """
     episode_rewards = []
     for _ in range(n_eval_episodes):
-        state, _ = env.reset()
+        state = env.reset()
         total_rewards_ep = 0
 
         for _ in range(max_steps):
             action, _ = policy.act(state, device)
-            new_state, reward, terminated, truncated, _ = env.step(action)
+            new_state, reward, done, _ = env.step(action)
             total_rewards_ep += reward
 
-            if terminated or truncated:
+            if done:
                 break
             state = new_state
 
@@ -201,18 +201,17 @@ def record_video(
         device (str): Computing device id
     """
     print("Going to record a replay video...")
-    state, _ = env.reset()
+    state = env.reset()
     images = []  # To store the video frames
     # Store the starting frame before taking any action
-    images.append(env.render())
+    images.append(env.render(mode="rgb_array"))
     done = False
     while not done:
         # Take the action that have the maximum expected future reward given that state
         action, _ = policy.act(state, device)
-        state, _, terminated, truncated, _ = env.step(action)
-        done = terminated or truncated
+        state, _, done, _ = env.step(action)
         # Store the frame of the current state
-        images.append(env.render())
+        images.append(env.render(mode="rgb_array"))
 
     # Store the frames in a video file
     imageio.mimsave(out_path, [np.array(img) for img in images], fps=fps)
