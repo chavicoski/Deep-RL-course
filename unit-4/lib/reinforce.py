@@ -12,14 +12,29 @@ from torch.distributions import Categorical
 
 
 class Policy(nn.Module):
-    def __init__(self, state_size: int, action_size: int, h_size: int) -> None:
+    def __init__(
+        self,
+        state_size: int,
+        action_size: int,
+        h_size: int,
+        n_layers: int = 2,
+    ) -> None:
         super(Policy, self).__init__()
-        self.model = nn.Sequential(
-            nn.Linear(state_size, h_size),
-            nn.ReLU(),
-            nn.Linear(h_size, action_size),
-            nn.Softmax(dim=1),
-        )
+        if n_layers < 2:
+            raise ValueError(f"`n_layers` must be at least 2! ({n_layers=})")
+
+        # Add the input layer
+        layers = [nn.Linear(state_size, h_size), nn.ReLU()]
+        # Add hidden layers
+        for _ in range(n_layers - 2):
+            layers.append(nn.Linear(h_size, h_size))
+            layers.append(nn.ReLU())
+        # Add output layer
+        layers.append(nn.Linear(h_size, action_size))
+        layers.append(nn.Softmax(dim=1))
+
+        # Create the model from the sequence of layers
+        self.model = nn.Sequential(*layers)
 
     def forward(self, x):
         return self.model(x)

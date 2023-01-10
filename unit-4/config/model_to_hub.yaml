@@ -1,6 +1,6 @@
 defaults:
   - _self_
-  - eval_env: cartpole_v1
+  - eval_env: pixelcopter_ple_v0
 
 # Computing device
 device: "gpu" # Options: "gpu" or "cpu"
@@ -13,18 +13,18 @@ tags:
   - "deep-rl-class"
 
 # Path to the directory of the training run to upload
-model_dir: "runs/train/2023-01-08_19-02-55"
+model_dir: "runs/train/2023-01-10_06-19-53"
 # Path to the trained model checkpoint
 model_path : "${model_dir}/model.pt"
 # Path to the hyperparameters used to train the model
 hparams_path : "${model_dir}/hyperparameters.json"
 
 # Name for the model file in the hub
-model_name: "Reinforce_CartPole-v1"
+model_name: "Reinforce_Pixelcopter-PLE-v0"
 
 # Id of the repository in the Hugging Face Hub
 # The format is: "{organization}/{repo_name}" (use your username as the "organization")
-repo_id: "chavicoski/Reinforce_CartPole-v1"
+repo_id: "chavicoski/Reinforce_Pixelcopter-PLE-v0"
 
 # Frames Per Second (fps) to use in the sample video of the repo
 fps: 30
