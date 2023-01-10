@@ -26,6 +26,8 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 3](unit-3): This unit explains how **Deep Q-Learning** works. In the exercise you can train a Deep Q-Learning agent to play Atari games using the game frames and Convolutional Neural Network (CNN).
 
+- [Unit 4](unit-4): This unit explains **Policy-based methods**. In the exercise you have to implement the *Policy Gradient* algorithm using *Pytorch* to play in two different environments.
+
 # HOW TO RUN
 
 In each unit folder you can find a README with the full explanation to run the code. Each unit has the code to train the models and push them to the [Hugging Face Hub](https://huggingface.co/docs/hub/index).
