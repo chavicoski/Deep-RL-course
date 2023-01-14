@@ -19,10 +19,13 @@ RUN git clone https://github.com/huggingface/ml-agents \
     && pip install -e ./ml-agents-envs \
     && pip install -e ./ml-agents
 
-# Download the environment
+# Download the environments: SnowballTarget and Pyramids
 RUN cd ml-agents \
     && mkdir -p mkdir training-envs-executables/linux \
     && wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1YHHLjyj6gaZ3Gemx1hQgqrPgSS2ZhmB5' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1YHHLjyj6gaZ3Gemx1hQgqrPgSS2ZhmB5" -O ./training-envs-executables/linux/SnowballTarget.zip \
-    && rm -rf /tmp/cookies.txt \
     && unzip -d ./training-envs-executables/linux/ ./training-envs-executables/linux/SnowballTarget.zip \
-    && chmod -R 755 ./training-envs-executables/linux/SnowballTarget
+    && chmod -R 755 ./training-envs-executables/linux/SnowballTarget \
+    && wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1UiFNdKlsH0NTu32xV-giYUEVKV4-vc7H' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1UiFNdKlsH0NTu32xV-giYUEVKV4-vc7H" -O ./training-envs-executables/linux/Pyramids.zip \
+    && unzip -d ./training-envs-executables/linux/ ./training-envs-executables/linux/Pyramids.zip \
+    && chmod -R 755 ./training-envs-executables/linux/Pyramids \
+    && rm -rf /tmp/cookies.txt
