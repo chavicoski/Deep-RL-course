@@ -1,4 +1,4 @@
-![Envs](etc/envs.jpeg)
+![Envs](etc/envs.png)
 
 # Unit 5: Introduction to Unity ML-Agents
 
