@@ -28,6 +28,8 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 4](unit-4): This unit explains **Policy-based methods**. In the exercise you have to implement the *Policy Gradient* algorithm using *Pytorch* to play in two different environments.
 
+- [Unit 5](unit-5): This unit explains the fundamentals ot the [ML-Agents](https://github.com/Unity-Technologies/ml-agents) toolkit. In the exercise you have to train agents for two [Unity](https://unity.com/) environments: *SnowballTarget* (created at Hugging Face) and *Pyramids* (created by the Unity team).
+
 # HOW TO RUN
 
 In each unit folder you can find a README with the full explanation to run the code. Each unit has the code to train the models and push them to the [Hugging Face Hub](https://huggingface.co/docs/hub/index).
