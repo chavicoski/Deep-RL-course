@@ -1,5 +1,5 @@
-![Frozen Lake](https://www.gymlibrary.dev/_images/frozen_lake.gif)
-![Taxi](https://www.gymlibrary.dev/_images/taxi.gif)
+![Frozen Lake](etc/frozen_lake.gif)
+![Taxi](etc/taxi.gif)
 
 # Unit 2: Introduction to Q-Learning
 
