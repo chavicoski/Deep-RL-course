@@ -22,7 +22,7 @@ If you want to modify some hyperparameters you can do it in the configuration fi
 
 By default it will train an agent in the *AntBullet-v0* environment. You can select the *PandaReachDense-v2* environment by selecting the "*panda_reach_dense_v2*" env in the "*env*" field in [train.yaml](config/train.yaml). You should also change the "*experiment_name*" field to fit your experiment configuration.
 
-Note: Changing the environment to *PandaReachDense-v2* requires you to change the *policy* type because the observation space is a dictionary. To do it, change the "*policy*" field in [a2c.yaml](config/model/a2c.yaml) to "*MultiInputPolicy*".
+**Note:** Changing the environment to *PandaReachDense-v2* requires you to change the *policy* type because the observation space is a dictionary. To do it, change the "*policy*" field in [a2c.yaml](config/model/a2c.yaml) to "*MultiInputPolicy*".
 
     docker-compose run train
    
