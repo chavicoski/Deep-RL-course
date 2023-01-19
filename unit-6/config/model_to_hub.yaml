@@ -1,0 +1,29 @@
+# Name of the environment
+env_id: "AntBulletEnv-v0"
+
+# Function to load the model from a checkpoint zip file
+load_model:
+  # Note: You should call the load function for you RL algorithm (e.g. A2C, PPO,...)
+  _target_: stable_baselines3.A2C.load
+  # Path to the model checkpoint file to upload
+  path: "runs/train/2023-01-18_21-47-17/A2C_AntBullet-v0.zip"
+
+# Name for the model file in the hub
+model_name: "a2c-${env_id}"
+
+# RL alorithm used in the model
+model_architecture: "A2C"
+
+# Id of the repository in the Hugging Face Hub
+# The format is: "{organization}/{repo_name}" (use your username as the "organization")
+repo_id: "chavicoski/a2c-${env_id}"
+
+# Commit message for the hub repository
+commit_message: "Actor Critic model for ${env_id} environment"
+
+hydra:
+  run:
+    # The script outputs will be stored in this folder
+    dir: runs/model_to_hub/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: False

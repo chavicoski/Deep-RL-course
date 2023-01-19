@@ -1,0 +1,20 @@
+defaults:
+  - _self_
+  - env: ant_bullet_v0
+  - model: a2c
+
+experiment_name: "A2C_AntBullet-v0"
+
+# Training params
+total_timesteps: 5000000
+
+# Eval params
+n_eval_episodes: 10
+deterministic: true
+
+hydra:
+  run:
+    # The experiment outputs will be stored in this folder
+    dir: runs/train/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True

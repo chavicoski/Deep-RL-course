@@ -1,0 +1,16 @@
+_target_: stable_baselines3.A2C
+policy: "MlpPolicy"
+# The `env` parameter should be provided in the script
+gae_lambda: 0.9
+gamma: 0.99
+learning_rate: 0.0001
+max_grad_norm: 0.5
+n_steps: 10
+vf_coef: 0.4
+ent_coef: 0.0
+use_rms_prop: false
+use_sde: true
+verbose: 1
+policy_kwargs:
+  log_std_init: -2
+  ortho_init: false
