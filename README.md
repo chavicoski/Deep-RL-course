@@ -30,6 +30,8 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 5](unit-5): This unit explains the fundamentals ot the [ML-Agents](https://github.com/Unity-Technologies/ml-agents) toolkit. In the exercise you have to train agents for two [Unity](https://unity.com/) environments: *SnowballTarget* (created at Hugging Face) and *Pyramids* (created by the Unity team).
 
+- [Unit 6](unit-6): This unit explains a new algorithm called *Actor-Critic** that is a combination of *Value-Based* and *Policy-Based* methods. In the exercise you can train agents for two robotic based environments.
+
 # HOW TO RUN
 
 In each unit folder you can find a README with the full explanation to run the code. Each unit has the code to train the models and push them to the [Hugging Face Hub](https://huggingface.co/docs/hub/index).
