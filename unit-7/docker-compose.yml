@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  train:
+    container_name: experiment_training
+    image: deep-rl-course:unit7
+    build: .
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - .:/workspace/src
+    command: ./src/train.sh
+
+  model_to_hub:
+    container_name: model_to_hub
+    image: deep-rl-course:unit7
+    build: .
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - ./runs:/workspace/runs
+      - ./model_to_hub.sh:/workspace/model_to_hub.sh
+    command: bash -c "huggingface-cli login && ./model_to_hub.sh"
