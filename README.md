@@ -28,11 +28,11 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 4](unit-4): A review of **Policy-based methods**. In the exercise you have to implement the *Policy Gradient* algorithm using *Pytorch* to play in two different environments.
 
-- [Unit 5](unit-5): Introduction to the fundamentals ot the [ML-Agents](https://github.com/Unity-Technologies/ml-agents) toolkit. In the exercise you have to train agents for two [Unity](https://unity.com/) environments: *SnowballTarget* (created at Hugging Face) and *Pyramids* (created by the Unity team).
+- [Unit 5](unit-5): Introduction to the fundamentals ot the [ML-Agents](https://github.com/Unity-Technologies/ml-agents) **toolkit**. In the exercise you have to train agents for two [Unity](https://unity.com/) environments: *SnowballTarget* (created at Hugging Face) and *Pyramids* (created by the Unity team).
 
 - [Unit 6](unit-6): This unit explains a new algorithm called **Actor-Critic**, which is a combination of *Value-Based* and *Policy-Based* methods. In the exercise you can train agents for two robotic based environments.
 
-- [Unit 7](unit-7): An introduction to Multi-Agents Reinforcement Learning (MARL). In the exercise you have to train a MARL system to play soccer in a 2vs2 match. The environment is a [Unity](https://unity.com/) environment and the model is trained using [ML-Agents](https://github.com/Unity-Technologies/ml-agents).
+- [Unit 7](unit-7): An introduction to **Multi-Agents Reinforcement Learning (MARL)**. In the exercise you have to train a MARL system to play soccer in a 2vs2 match. The environment is a [Unity](https://unity.com/) environment and the model is trained using [ML-Agents](https://github.com/Unity-Technologies/ml-agents).
 
 # HOW TO RUN
 
