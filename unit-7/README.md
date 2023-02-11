@@ -1,4 +1,4 @@
-![SoccerTwos](etc/soccertwos.png)
+![SoccerTwos](etc/soccertwos.gif)
 
 # Unit 7: Introduction to Multi-Agents
 
