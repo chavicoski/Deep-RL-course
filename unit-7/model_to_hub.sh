@@ -4,7 +4,7 @@ export RUN_ID="2023-02-11_11-39-53"
 # Use the repo id for your {user/organization}/{repo-name}
 export REPO_ID="chavicoski/poca-SoccerTwos"
 # A message to show with the model description
-export COMMIT_MESSAGE="First model with 15M max_steps"
+export COMMIT_MESSAGE="First model. Trained for 15M steps. Achieved a training ELO around 1800"
 
 mlagents-push-to-hf \
     --run-id="$RUN_ID" \
