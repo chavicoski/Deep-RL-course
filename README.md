@@ -34,6 +34,8 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 7](unit-7): An introduction to **Multi-Agents Reinforcement Learning (MARL)**. In the exercise you have to train a MARL system to play soccer in a 2vs2 match. The environment is a [Unity](https://unity.com/) environment and the model is trained using [ML-Agents](https://github.com/Unity-Technologies/ml-agents).
 
+- [Unit 8](unit-8): Explanation of the **Proximal Policy Optimization (PPO)** algorithm. In the exercise you implement a PPO agent from scratch using Pytorch to play Lunar Lander environment.
+
 # HOW TO RUN
 
 In each unit folder you can find a README with the full explanation to run the code. Each unit has the code to train the models and push them to the [Hugging Face Hub](https://huggingface.co/docs/hub/index).

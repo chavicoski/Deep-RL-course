@@ -1,5 +1,5 @@
-# docs and experiment results can be found at https://docs.cleanrl.dev/rl-algorithms/ppo/#ppopy
-
+"""Script to train a PPO agent for different gym environments and push the
+resulting model to the hugging face hub"""
 import argparse
 import os
 import random
