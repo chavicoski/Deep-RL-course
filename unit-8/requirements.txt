@@ -1,0 +1,9 @@
+pyglet==1.5
+pyvirtualdisplay
+gym==0.21
+imageio
+imageio-ffmpeg
+huggingface_hub
+box2d
+wandb
+hydra-core

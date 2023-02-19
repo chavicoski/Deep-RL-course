@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  train:
+    container_name: experiment_training
+    image: deep-rl-course:unit8
+    build: .
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - .:/workspace
+    command: bash -c "
+        huggingface-cli login
+        && python main.py \
+            --repo-id="chavicoski/PPO-CleanRL-LunarLander-v2" \
+            --total-timesteps=1000000 \
+            --update-epochs=20 \
+            --gae-lambda=0.98 \
+            --num-steps=1024
+      "
