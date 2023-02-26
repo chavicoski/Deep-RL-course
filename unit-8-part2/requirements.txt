@@ -1,0 +1,3 @@
+imageio
+imageio_ffmpeg
+sample-factory[vizdoom]
