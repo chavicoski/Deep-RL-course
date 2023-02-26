@@ -45,7 +45,7 @@ def main():
     # Select the environment to train
     env = "doom_health_gathering_supreme"
     # Performance config
-    n_workers = 14
+    n_workers = 12
     n_envs_per_worker = 8
     # Train hyperparameters
     n_steps = 100000000
@@ -77,6 +77,7 @@ def main():
             "--max_num_episodes=10",
             "--max_num_frames=100000",
             "--push_to_hub",
+            "--train_dir=./runs",
             f"--hf_repository={hf_username}/vizdoom_health_gathering_supreme",
         ],
         evaluation=True,
