@@ -34,7 +34,9 @@ You can find the exercise for each unit in his respective folder. Here is a brie
 
 - [Unit 7](unit-7): An introduction to **Multi-Agents Reinforcement Learning (MARL)**. In the exercise you have to train a MARL system to play soccer in a 2vs2 match. The environment is a [Unity](https://unity.com/) environment and the model is trained using [ML-Agents](https://github.com/Unity-Technologies/ml-agents).
 
-- [Unit 8](unit-8): Explanation of the **Proximal Policy Optimization (PPO)** algorithm. In the exercise you implement a PPO agent from scratch using Pytorch to play Lunar Lander environment.
+- [Unit 8 part 1](unit-8): Explanation of the **Proximal Policy Optimization (PPO)** algorithm. In the exercise you implement a PPO agent from scratch using Pytorch to play Lunar Lander environment.
+
+- [Unit 8 part 2](unit-8-part2): Application of the **Proximal Policy Optimization (PPO)** algorithm in a [VizDoom](https://vizdoom.cs.put.edu.pl/) environment. The exercise uses the *Health Gathering Supreme* environment from VizDoom, and uses the [Sample Factory](https://www.samplefactory.dev/) library (focused on efficiency) to train the models with a high-throughput pipeline.
 
 # HOW TO RUN
 
